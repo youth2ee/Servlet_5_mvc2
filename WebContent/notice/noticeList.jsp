@@ -108,8 +108,7 @@
 					<!-- for문 안쪽 -->
 					<tr class="b3">
 						<td><%=noticeDTO.getNum()%></td>
-						<td class="b4"><a class="a"
-							href="./noticeSelect.jsp?num=<%=noticeDTO.getNum()%>"> <%=noticeDTO.getTitle()%></a></td>
+						<td class="b4"><a class="a" href="./noticeSelect.notice?num=<%=noticeDTO.getNum()%>"> <%=noticeDTO.getTitle()%></a></td>
 						<td><%=noticeDTO.getWriter()%></td>
 						<td><%=noticeDTO.getReg_date()%></td>
 						<td><%=noticeDTO.getHit()%></td>
@@ -120,7 +119,7 @@
 
 				</tbody>
 			</table>
-			<br> 
+			<a href="./noticeWrite.notice">write</a>
 
 		</div>
 	</section>

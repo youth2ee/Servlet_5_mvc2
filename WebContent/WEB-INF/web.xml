@@ -6,7 +6,15 @@
   version="3.1">
   <display-name>Servlet_5_mvc2</display-name>
 
+<servlet>
+<servlet-name> notice</servlet-name>
+<servlet-class>com.naver.controller.NoticeController</servlet-class>
+</servlet>
 
+<servlet-mapping>
+<servlet-name>notice</servlet-name>
+<url-pattern>*.notice</url-pattern>
+</servlet-mapping>
 
 
 

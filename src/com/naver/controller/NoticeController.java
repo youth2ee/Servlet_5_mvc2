@@ -36,6 +36,8 @@ public class NoticeController extends HttpServlet {
 			actionFoward = noticeService.noticeList(request, response);
 		} else if (url.equals("noticeSelect")) {
 			actionFoward = noticeService.noticeSelect(request, response);
+		} else if(url.equals("noticeWrite")) {
+			actionFoward = noticeService.noticeWrite(request, response);
 		}
 		
 		if(actionFoward.isFlag()) {
@@ -45,7 +47,6 @@ public class NoticeController extends HttpServlet {
 			response.sendRedirect(actionFoward.getPath());
 		}
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
