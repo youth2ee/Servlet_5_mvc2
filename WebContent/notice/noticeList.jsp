@@ -4,7 +4,10 @@
     pageEncoding="UTF-8"%>
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@ taglib prefix="xml" uri="http://java.sun.com/jsp/jstl/xml" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,6 +77,11 @@
 
 </head>
 <body>
+<%-- <%@ include file="../layout/nav.jspf" %> --%>
+<c:import url="../layout/nav.jspf">
+	<c:param name="test" value="pooh"></c:param>
+</c:import>
+
 
 	<section style="background-color: rgb(240, 240, 240); height: auto; padding-bottom: 20px;">
 		<div class="div_t">
@@ -94,13 +102,13 @@
 
 				<tbody>
 				<!-- 자바의 향상된 for문과 유사 / 개수만큼 알아서 돌려준다. -->
-				<c:forEach items="${requestScope.list}" var="dto">
+				<c:forEach items="${requestScope.list}" var="dto" varStatus="st">
 					<tr class="b3">
 						<td>${pageScope.dto.num}</td>
 						<td class="b4"><a class="a" href="./noticeSelect.notice?num=${pageScope.dto.num}">${pageScope.dto.title}</a></td>
 						<td>${pageScope.dto.writer}</td>
 						<td>${pageScope.dto.reg_date}</td>
-						<td>${pageScope.dto.hit}</td>
+						<td>${pageScope.dto.hit}: st ${st.first}</td>
 					</tr>
 				</c:forEach>
 

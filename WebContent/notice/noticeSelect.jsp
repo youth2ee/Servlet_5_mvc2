@@ -113,7 +113,6 @@
 				<tr class="b3">
 					<td class="b5" colspan="5" style="text-align: left; vertical-align: top; padding: 25px; height: 650px;">${requestScope.dto.contents}</td>
 				</tr>
-
 			</tbody>
 		</table>
 		
