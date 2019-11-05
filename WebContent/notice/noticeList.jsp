@@ -5,7 +5,6 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +103,6 @@
 						<td>${pageScope.dto.hit}</td>
 					</tr>
 				</c:forEach>
-
 
 				</tbody>
 			</table>
