@@ -2,10 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%
-	NoticeDTO noticeDTO = (NoticeDTO)request.getAttribute("dto");
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -106,20 +102,22 @@
 			</thead>
 
 			<tbody>
-				<tr class="b3">
-					<td><%=noticeDTO.getNum()%></td>
-					<td class="b4"><a class="a" href="./noticeSelect.jsp?num=<%=noticeDTO.getNum()%>"> <%=noticeDTO.getTitle()%></a></td>
-					<td><%=noticeDTO.getWriter()%></td>
-					<td><%=noticeDTO.getReg_date()%></td>
-					<td><%=noticeDTO.getHit()%></td>
+				<tr class="b3"> 
+					<td>${requestScope.dto.num}</td>
+					<td class="b4"> ${requestScope.dto.title}</td>
+					<td>${requestScope.dto.writer}</td>
+					<td>${requestScope.dto.reg_date}</td>
+					<td>${requestScope.dto.hit}</td>
 				</tr>
 				
 				<tr class="b3">
-					<td class="b5" colspan="5" style="text-align: left; vertical-align: top; padding: 25px; height: 650px;"><%=noticeDTO.getContents() %></td>
+					<td class="b5" colspan="5" style="text-align: left; vertical-align: top; padding: 25px; height: 650px;">${requestScope.dto.contents}</td>
 				</tr>
 
 			</tbody>
 		</table>
+		
+		<a href="./noticeUpdate.notice?num=${requestScope.dto.num}">UPDATE</a>
 
 		</div>
 </section>

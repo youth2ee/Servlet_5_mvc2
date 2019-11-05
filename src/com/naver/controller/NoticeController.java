@@ -23,7 +23,6 @@ public class NoticeController extends HttpServlet {
         noticeService = new NoticeService();
     }
 
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -38,12 +37,16 @@ public class NoticeController extends HttpServlet {
 			actionFoward = noticeService.noticeSelect(request, response);
 		} else if(url.equals("noticeWrite")) {
 			actionFoward = noticeService.noticeWrite(request, response);
+		} else if(url.equals("noticeUpdate")) {
+			actionFoward = noticeService.noticeUpdate(request, response);
 		}
 		
 		if(actionFoward.isFlag()) {
+			//true면 foward
 			RequestDispatcher view = request.getRequestDispatcher(actionFoward.getPath());
 			view.forward(request, response);
 		} else {
+			//false면 redirect
 			response.sendRedirect(actionFoward.getPath());
 		}
 	}

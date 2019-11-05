@@ -3,23 +3,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%
-	ArrayList<NoticeDTO> ar = (ArrayList<NoticeDTO>)request.getAttribute("list");
-
-%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>notice list</title>
-<!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-
-<!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <style type="text/css">
@@ -101,25 +94,38 @@
 				</thead>
 
 				<tbody>
-					<%
-						for (int i = 0; i < ar.size(); i++) {
-							NoticeDTO noticeDTO = ar.get(i);
-					%>
-					<!-- for문 안쪽 -->
+				<!-- 자바의 향상된 for문과 유사 / 개수만큼 알아서 돌려준다. -->
+				<c:forEach items="${requestScope.list}" var="dto">
 					<tr class="b3">
-						<td><%=noticeDTO.getNum()%></td>
-						<td class="b4"><a class="a" href="./noticeSelect.notice?num=<%=noticeDTO.getNum()%>"> <%=noticeDTO.getTitle()%></a></td>
-						<td><%=noticeDTO.getWriter()%></td>
-						<td><%=noticeDTO.getReg_date()%></td>
-						<td><%=noticeDTO.getHit()%></td>
+						<td>${pageScope.dto.num}</td>
+						<td class="b4"><a class="a" href="./noticeSelect.notice?num=${pageScope.dto.num}">${pageScope.dto.title}</a></td>
+						<td>${pageScope.dto.writer}</td>
+						<td>${pageScope.dto.reg_date}</td>
+						<td>${pageScope.dto.hit}</td>
 					</tr>
-					<%
-						}
-					%>
+				</c:forEach>
+
 
 				</tbody>
 			</table>
-			<a href="./noticeWrite.notice">write</a>
+			
+			<div>
+				<c:forEach begin="1" end="10" step="2" var="i">
+					${pageScope.i}
+				</c:forEach>
+			</div>
+			
+			<!-- 로그인 한 사람만 작성버튼 보기 : session에 memberDTO가 들어있다고 가정하고 한다. -->
+			<c:if test="${not empty sessionScope.member}"> 
+				<a href="./noticeWrite.notice">write</a>
+			</c:if>
+			
+			<c:choose>
+				<c:when test=""></c:when>
+				<c:when test=""></c:when>
+				<c:otherwise></c:otherwise>
+			</c:choose>
+			
 
 		</div>
 	</section>
